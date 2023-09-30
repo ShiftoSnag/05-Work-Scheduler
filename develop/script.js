@@ -15,6 +15,7 @@ $(function () {
         $(this).toggleClass('present', blockHour === currentHour);
         $(this).toggleClass('future', blockHour > currentHour);
       });
+    }
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
@@ -28,7 +29,6 @@ $(function () {
           localStorage.setItem(key, value);
         });
       }
-    }
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
@@ -51,16 +51,17 @@ $(function () {
       const value = localStorage.getItem(key);
       $(this).children('.description').val(value);
     });
-     
+    function updateTime() {
     const dateElement = $('#date');
     const timeElement = $('#time');
     const currentDate = dayjs().format('dddd, MMMM D, YYYY');
     const currentTime = dayjs().format('hh:mm:ss A');
     dateElement.text(currentDate);
     timeElement.text(currentTime);
-  },
-  hourlyColor(),
-  textEntry(),               
-  refreshColor(),
+  }
+  hourlyColor();
+  textEntry();             
+  refreshColor();
 
-  setInterval(updateTime, 1000))
+  setInterval(updateTime, 1000);
+});
